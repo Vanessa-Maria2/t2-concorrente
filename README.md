@@ -25,3 +25,8 @@ Além disso, adicionamos um **condition associado ao conceito da pista estar liv
 A partir deste diagrama, temos que a simulação se inicia quando uma thread executa o método <code>executeRequest()</code> que vai avaliar se a solicitação é para pouso ou decolagem. No caso das operações de pouso, o sistema usa o mecanismo <code>lock()</code> para controlar o acesso a região crítica, permitindo que apenas um thread execute por vez naquele trecho de código. Assim as demais threads chegam e ficam paradas no lock até que seja liberado. Nos momentos em que a pista estiver ocupada, a thread (avião) entra em uma fila de espera. Caso contrário, a thread da início ao processo de pouso respeitando a ordem de chegada. Em caso de decolagem, o sistema também analisa a disponibilidade por meio do mecanismo <code>lock()</code>. Contudo, nesse caso o sistema verifica o landingCount (quantidade de aeronaves aguardando pouso) - se houver aeronaves esperando para pousar, a thread de decolagem entra em estado AWAIT até que o recurso seja liberado. É utilizado <code>condition</code> para verificar a disponibilidade da pista.
 
 O sistema conta com um mecanismo de sincronização para priorizar operações de pouso sobre decolagens. Cada operação é finalizada adequadamente após sua conclusão, liberando o recurso para a próxima thread em espera.
+
+
+## Authors
+- [Breno Barbosa](https://github.com/Brevex)  
+- [Vanessa Maria](https://github.com/Vanessa-Maria2)   
